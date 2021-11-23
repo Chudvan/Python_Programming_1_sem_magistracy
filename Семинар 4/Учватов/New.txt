@@ -1,0 +1,38 @@
+SQL
+	PRIMARY KEY - первичный ключ - может быть для нескольких полей #(Fam, Im) - https://sql-language.ru/primary-key.html
+	FOREIGN KEY - внешний ключ (может быть NULL) - https://sql-language.ru/foreign-key.html
+		родительский  ключ
+		ссылочная целостность
+	INSERT OR IGNORE INTO - удобно в случае случайного дублирования UNIQUE индекса или PRIMARY KEY при вставке - http://ekimoff.ru/214/
+	DELETE FROM - очистить таблицу - http://www.sql-tutorial.ru/ru/book_delete_statement.html
+
+requests
+	.get(<ссылка без query params>, params={<словарик с query params>})
+
+1hh.ru API
+	https://api.hh.ru/areas - возвращает древовидный список всех регионов - https://github.com/hhru/api/blob/master/docs/areas.md
+
+Python (Sqlite3)
+	OperationalError: database is locked - https://stackoverflow.com/questions/3172929/operationalerror-database-is-locked
+	
+sqlite3
+	.close - закрывает connection (после commit) - https://docs.python.org/3/library/sqlite3.html
+
+Flask
+	app.config['JSON_AS_ASCII'] = False - для того, чтобы не было '\u0439' символов
+	request.json == request.get_json() - https://stackoverflow.com/questions/20001229/how-to-get-posted-json-in-flask
+
+df
+	.groupby - разбивает df на несколько df (по группам)
+	.where(<df bool-евый>, <val замены>) - все False в df заменяет на <val замены> - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.where.html
+	.to_dict - df в dict (key - название столбца, val - вложенный dict(key - Index, val - значение столбца)) #default
+		orient="records" - [dict-записей] - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_dict.html?highlight=to_dict#pandas.DataFrame.to_dict
+
+объект groupby
+	.agg - применяет функцию к каждому df # res - для каждого df - строка
+		можно передать в качестве аргумента - {'<имя столбца>': <ф-я агрегации>} V {'<имя столбца>': [<ф-я агрегации>]} - каждому столбцу своя <ф-я агрегации> - стр. 318
+
+pd
+	notnull - для отсутствующих данных - False - стр. 146
+
+
